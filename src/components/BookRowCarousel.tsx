@@ -1,9 +1,8 @@
 "use client";
 
 import { Book } from "@/types/book";
-import { ChevronLeft, ChevronRight, Heart, HeartOff } from "lucide-react";
-import { useRef, useState } from "react";
-import { clsx } from "yet-another-react-lightbox";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
 import FavoriteButton from "./FavoriteButton";
 import Link from "next/link";
 

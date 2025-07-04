@@ -4,11 +4,8 @@ import { supabase } from "@/lib/supabase";
 import { Book } from "@/types/book";
 import BookClient from "@/components/BookClient";
 
-type Props = {
-  params: { id: string };
-};
-
-export default async function BookPage({ params }: Props) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function BookPage({ params }: any) {
   const { data: book, error } = await supabase
     .from("books")
     .select("*")

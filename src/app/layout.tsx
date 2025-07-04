@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
-import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/components/AuthProvider";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,19 +32,18 @@ export default function RootLayout({
       >
         <header className="sticky top-0 z-50 bg-white shadow-sm">
           <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-            <a
+            <Link
               href="/"
               className="text-2xl font-bold tracking-tight text-gray-900"
             >
               <span className="font-semibold">📚 Bookstore</span>
-            </a>
+            </Link>
             <NavBar />
           </div>
         </header>
         <AuthProvider>
           <main className="min-h-screen px-4">{children}</main>
         </AuthProvider>
-        {/* <Toaster position="top-center" /> */}
       </body>
     </html>
   );

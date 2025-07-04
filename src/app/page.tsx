@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import BookCard from "@/components/BookCard";
 import { Book } from "@/types/book";
-import BookCarousel from "@/components/BookCarousel";
 import Filters from "@/components/Filters";
 import BookRowCarousel from "@/components/BookRowCarousel";
 

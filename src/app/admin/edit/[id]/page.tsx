@@ -5,11 +5,8 @@ import { notFound } from "next/navigation";
 import { Database } from "@/types/database";
 import EditBookForm from "./form";
 
-type Props = {
-  params: { id: string };
-};
-
-export default async function EditBookPage({ params }: Props) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export default async function EditBookPage({ params }: any) {
   const supabase = createServerComponentClient<Database>({ cookies });
 
   const { data: book } = await supabase

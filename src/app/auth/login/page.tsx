@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     const toastId = toast.loading("Connexion en cours...");
 
-    const { data, error } = await supabase.auth.signInWithPassword({
+    const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });

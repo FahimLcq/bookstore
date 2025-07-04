@@ -1,10 +1,11 @@
 "use client";
 
 import { supabase } from "@/lib/supabase";
+import { Book } from "@/types/book";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
-export default function DeleteBookButton({ book }: { book: any }) {
+export default function DeleteBookButton({ book }: { book: Book }) {
   const router = useRouter();
 
   const handleDelete = async () => {
@@ -22,7 +23,7 @@ export default function DeleteBookButton({ book }: { book: any }) {
       if (imagePaths.length) {
         const { error: imageError } = await supabase.storage
           .from("book-images")
-          .remove(imagePaths);
+          .remove(imagePaths.filter((path): path is string => !!path));
 
         if (imageError) throw imageError;
       }

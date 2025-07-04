@@ -6,8 +6,9 @@ import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import toast from "react-hot-toast";
 import ReorderableImages from "@/components/ReorderableImages";
+import { Book } from "@/types/book";
 
-export default function EditBookForm({ book }: { book: any }) {
+export default function EditBookForm({ book }: { book: Book }) {
   const router = useRouter();
   const [form, setForm] = useState({
     title: book.title,
@@ -71,7 +72,7 @@ export default function EditBookForm({ book }: { book: any }) {
         .from("books")
         .update({
           ...form,
-          price: parseFloat(form.price),
+          price: form.price,
           images: updatedImages,
         })
         .eq("id", book.id);
