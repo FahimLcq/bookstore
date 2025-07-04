@@ -44,11 +44,6 @@ export default function NavBar() {
           </Link>
         </li>
         <li>
-          <Link href="/contact" className="hover:underline transition">
-            Contact
-          </Link>
-        </li>
-        <li>
           <Link href="/favoris" className="hover:underline transition ">
             Favoris
           </Link>

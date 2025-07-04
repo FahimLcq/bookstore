@@ -42,8 +42,12 @@ export default function BookClient({ book }: { book: Book }) {
 
       <div className="text-center space-y-2 text-sm text-gray-600 mb-6">
         <p>
+          <span className="font-semibold text-[#5c4433]">✍️ Auteur :</span>{" "}
+          <span className="text-base">{book.author}</span>
+        </p>
+        <p>
           💰 <span className="font-semibold text-[#5c4433]">Prix :</span>{" "}
-          <span className="text-base">{book.price} €</span>
+          <span className="text-base">{book.price} €</span>{" "}
         </p>
         <p>
           📚 <span className="font-semibold text-[#5c4433]">Catégorie :</span>{" "}

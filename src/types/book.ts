@@ -4,6 +4,7 @@ export type Book = {
   description: string;
   price: number;
   condition: string;
+  author?: string;
   category: string;
   images: string[];
   created_at: string;

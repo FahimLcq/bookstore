@@ -12,6 +12,7 @@ export default function EditBookForm({ book }: { book: Book }) {
   const router = useRouter();
   const [form, setForm] = useState({
     title: book.title,
+    author: book.author || "",
     description: book.description,
     price: book.price,
     category: book.category,
@@ -102,6 +103,14 @@ export default function EditBookForm({ book }: { book: Book }) {
           onChange={handleInput}
           className="w-full border px-4 py-2 rounded"
           placeholder="Titre"
+        />
+        <input
+          type="text"
+          name="author"
+          value={form.author}
+          onChange={handleInput}
+          className="w-full border px-4 py-2 rounded"
+          placeholder="Auteur"
         />
         <textarea
           name="description"

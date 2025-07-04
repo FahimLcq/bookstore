@@ -5,11 +5,14 @@ import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { v4 as uuidv4 } from "uuid";
 import toast from "react-hot-toast";
+import ReorderableImages from "@/components/ReorderableImages";
 
 export default function AddBookPage() {
   const router = useRouter();
+
   const [form, setForm] = useState({
     title: "",
+    author: "",
     description: "",
     price: "",
     category: "",
@@ -31,10 +34,29 @@ export default function AddBookPage() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      const fileList = Array.from(e.target.files);
-      setFiles(fileList);
-      setPreviews(fileList.map((file) => URL.createObjectURL(file)));
+      const selectedFiles = Array.from(e.target.files);
+      setFiles(selectedFiles);
+      setPreviews(selectedFiles.map((f) => URL.createObjectURL(f)));
     }
+  };
+
+  const handleReorder = (newOrder: string[]) => {
+    const newFilesOrder = newOrder.map((url) => {
+      const index = previews.indexOf(url);
+      return files[index];
+    });
+    setPreviews(newOrder);
+    setFiles(newFilesOrder);
+  };
+
+  const handleDelete = (url: string) => {
+    const index = previews.indexOf(url);
+    const newFiles = [...files];
+    const newPreviews = [...previews];
+    newFiles.splice(index, 1);
+    newPreviews.splice(index, 1);
+    setFiles(newFiles);
+    setPreviews(newPreviews);
   };
 
   const handleSubmit = async () => {
@@ -91,6 +113,14 @@ export default function AddBookPage() {
           type="text"
           name="title"
           placeholder="Titre"
+          required
+          className="w-full border px-4 py-2 rounded"
+          onChange={handleInput}
+        />
+        <input
+          type="text"
+          name="author"
+          placeholder="Auteur"
           required
           className="w-full border px-4 py-2 rounded"
           onChange={handleInput}
@@ -152,15 +182,12 @@ export default function AddBookPage() {
           </label>
 
           {previews.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-3">
-              {previews.map((src, i) => (
-                <img
-                  key={i}
-                  src={src}
-                  alt={`Image ${i + 1}`}
-                  className="w-full h-40 object-cover rounded border"
-                />
-              ))}
+            <div className="mt-4">
+              <ReorderableImages
+                images={previews}
+                onChange={handleReorder}
+                onDelete={handleDelete}
+              />
             </div>
           )}
         </div>

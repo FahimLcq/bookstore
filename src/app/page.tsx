@@ -94,13 +94,16 @@ export default function HomePage() {
 
         <input
           type="text"
-          placeholder="🔍 Rechercher un livre..."
+          placeholder="🔍 Rechercher un livre par son titre..."
           className="w-full mb-4 px-4 py-2 border rounded shadow-sm"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 
         <div className="mb-8">
+          <h2 className="text-2xl font-semibold mb-4 text-[#3b3028]">
+            Nouveautés
+          </h2>
           <BookRowCarousel books={books.slice(0, 10)} />
         </div>
 

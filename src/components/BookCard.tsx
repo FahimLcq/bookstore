@@ -22,6 +22,7 @@ export default function BookCard({ book }: { book: Book }) {
           <h3 className="font-serif text-lg font-semibold text-[#4e4039]">
             {book.title}
           </h3>
+          <p className="text-sm text-[#7d6a58] italic mt-1">{book.author}</p>
           <p className="text-sm text-[#7d6a58] mt-1">{book.price} €</p>
         </div>
       </div>

@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { AuthProvider } from "@/components/AuthProvider";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
         <AuthProvider>
           <main className="min-h-screen px-4">{children}</main>
         </AuthProvider>
+        <Footer />
       </body>
     </html>
   );
